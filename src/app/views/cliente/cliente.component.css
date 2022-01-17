@@ -1,0 +1,14 @@
+/* Structure */
+table {
+    width: 105%;
+    border-color: #96D4D4;
+    
+  }
+  th, td{
+    border-color: #96D4D4;
+    border:1px solid #96D4D4;
+  }
+  .example-button-row {
+    color: forestgreen;
+    
+  }

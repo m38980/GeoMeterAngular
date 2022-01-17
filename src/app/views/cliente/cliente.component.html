@@ -1,0 +1,82 @@
+
+<div>
+  <mat-form-field>
+    <input matInput (keyup)="filtrar($any($event.target).value)" placeholder="Pesquisar Clientes">
+  </mat-form-field>
+</div>
+  
+  <table border="2px" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="idcliente">
+      <th mat-header-cell *matHeaderCellDef bgcolor="#96D4D4"> <strong>Código</strong></th>
+      <td mat-cell *matCellDef="let element"> {{element.idcliente}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef bgcolor="#96D4D4"> Nome do Cliente </th>
+      <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef bgcolor="#96D4D4"> E-mail </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="telefone">
+      <th mat-header-cell *matHeaderCellDef bgcolor="#96D4D4"> Telefone </th>
+      <td mat-cell *matCellDef="let element"> {{element.telefone}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="endereco">
+        <th mat-header-cell *matHeaderCellDef bgcolor="#96D4D4"> Endereço </th>
+        <td mat-cell *matCellDef="let element"> {{element.endereco}} </td>
+      </ng-container>
+
+          <!-- Symbol Column -->
+    <ng-container matColumnDef="nip">
+        <th mat-header-cell *matHeaderCellDef bgcolor="#96D4D4"> NIP </th>
+        <td mat-cell *matCellDef="let element"> {{element.nip}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef bgcolor="#96D4D4">Descrição</th>
+      <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+    </ng-container>
+
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="editar-eliminar">
+        <th mat-header-cell *matHeaderCellDef bgcolor="#96D4D4"> &nbsp;&nbsp;&nbsp;&nbsp;Editar  &nbsp;&nbsp; &nbsp;&nbsp;|   &nbsp;&nbsp;&nbsp;&nbsp;Eliminar </th>
+        <td mat-cell *matCellDef="let row"> 
+            <button mat-button color="primary" (click)="openModal(row)"> 
+                <mat-icon>edit</mat-icon>
+            </button>   
+            <button mat-button color="accent" (click)="onDelete(row.idcliente)" > 
+              <mat-icon>delete</mat-icon>
+          </button>            
+        </td> 
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table><br>
+
+  <mat-paginator [length]="100"[pageSize]="5"[pageSizeOptions]="[5, 10, 15]"aria-label="Select page">
+    
+</mat-paginator>
+
+  <div class="example-button-row">
+<button mat-fab color="warn" (click)="openModal()" style="float: auto; margin-right: 200px;">
+  <mat-icon>person_add</mat-icon>
+</button>
+
+<button mat-fab color="primary" (click)="openMenu()" style="float: auto; margin-left: -160px;">
+  <mat-icon>home</mat-icon>
+</button>
+</div>
